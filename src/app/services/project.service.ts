@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ProjectType } from 'src/types';
+import { ProjectType, TaskType } from 'src/types';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,11 @@ export class ProjectService {
   }
 
   get (): Observable<ProjectType[]> {
-    return this.http.get<ProjectType[]>('http://localhost:3000/projects')
+    return this.http.get<ProjectType[]>(`${this.apiURL}/projects`)
+  }
+
+  getTasksBy(projectId: number): Observable<TaskType[]> {
+    return this.http.get<TaskType[]>(`${this.apiURL}/tasks?projectId=${projectId}`)
   }
 
   // getUsers(): Observable<User[]> {

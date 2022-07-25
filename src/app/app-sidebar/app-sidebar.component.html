@@ -1,7 +1,11 @@
 <div class="wrapper">
   <h1>Todo Task</h1>
   <div class="list">
-    <app-data-list [data]="dataList" [cols]="cols"></app-data-list>
+    <app-data-list
+    [data]="dataList"
+    [cols]="cols"
+    [path]="path"
+    ></app-data-list>
   </div>
   <div class="control">
     <app-button type="square">

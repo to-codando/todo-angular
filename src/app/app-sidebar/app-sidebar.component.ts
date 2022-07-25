@@ -13,6 +13,7 @@ export class AppSidebarComponent implements OnInit {
   typeIconButton: string = 'add';
   cols = 2
   dataList: DataListType[] = [];
+  path = 'project'
 
 
   constructor(private projects: ProjectService) { }
