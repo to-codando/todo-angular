@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { dataType } from 'src/types';
+import { DataListType } from 'src/types';
 
 @Component({
   selector: 'app-show-tasks',
@@ -8,7 +8,7 @@ import { dataType } from 'src/types';
 })
 export class AppShowTasksComponent implements OnInit {
 
-  @Input() data: Array<dataType> = []
+  @Input() data: Array<DataListType> = []
   @Input() cols: number = 1
 
   constructor() { }

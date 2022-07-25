@@ -1,7 +1,8 @@
 
-export type dataType = {
+export type DataListType = {
+  id: number,
   title: string;
-  icons: Array<string>;
+  icons?: Array<string>;
 }
 
 export type ProjectType = {

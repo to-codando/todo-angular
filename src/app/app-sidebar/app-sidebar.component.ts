@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectType } from 'src/types';
+import { DataListType } from 'src/types';
 import { ProjectService } from '../services/project.service';
 
 @Component({
@@ -12,15 +12,12 @@ export class AppSidebarComponent implements OnInit {
   typeButton: string = 'circle';
   typeIconButton: string = 'add';
   cols = 2
-  dataList = [
-    {title: 'Primeiro Projeto', icons: ['delete']},
-    {title: 'Segundo  Projeto', icons: ['delete']}
-  ];
+  dataList: DataListType[] = [];
 
 
   constructor(private projects: ProjectService) { }
 
-  setDataList (data: ProjectType[]) {
+  setDataList (data: DataListType[]) {
     const icons = ['delete']
     this.dataList = data.map( item => {
       return { ...item, icons }

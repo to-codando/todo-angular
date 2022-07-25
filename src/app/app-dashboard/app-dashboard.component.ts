@@ -1,3 +1,4 @@
+import { DataListType } from 'src/types';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,10 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppDashboardComponent implements OnInit {
 
-  dataList = [
-    {title: 'Primeira Tareafa', icons:['edit_square','delete']},
-    {title: 'Segunda Tareafa', icons:['edit_square','delete']},
-  ]
+  dataList: DataListType[] = []
 
   constructor() { }
 
