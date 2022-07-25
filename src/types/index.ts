@@ -1,7 +1,17 @@
+export type DataListEventType = {
+  icon: IconType,
+  data: DataListType
+}
+
+export type IconType = {
+  type: string;
+  event?: string;
+}
+
 export type DataListType = {
   id: number,
   title: string;
-  icons?: Array<string>;
+  icons?: IconType[];
   projectId?: number;
   path?: string;
 }

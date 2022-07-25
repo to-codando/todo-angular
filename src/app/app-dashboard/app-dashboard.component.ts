@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { DataListType } from 'src/types';
-import { TaskType } from 'src/types';
+import { DataListType, TaskType, DataListEventType } from 'src/types';
 import { ProjectService } from '../services/project.service';
 
 @Component({
@@ -12,23 +11,39 @@ import { ProjectService } from '../services/project.service';
 export class AppDashboardComponent implements OnInit {
   dataList: DataListType[] = [];
 
-  // ['edit_sqaure','delete']
-
   constructor(
     private route: ActivatedRoute,
-    private projects: ProjectService,
-    ) {}
+    private projects: ProjectService
+  ) {}
 
-    setData (data: TaskType[]) {
-      const icons = ['edit_square','delete']
-      const path = ''
-      this.dataList = data.map( task => ({ ...task, icons, path }))
-    }
+  setData(data: TaskType[]) {
+    const path = '';
+
+    const icons = [
+      { type: 'edit_square', event: 'edit_task' },
+      { type: 'delete', event: 'remove_task' },
+    ];
+
+    this.dataList = data.map((task) => ({ ...task, icons, path }));
+  }
+
+  removeTask(payload: DataListEventType) {
+    const {data: { id }} = payload
+    this.projects.removeTask(id)
+      .subscribe(() => this.getTasks())
+  }
+
+  editTask(payload: DataListEventType) {
+    console.log(payload);
+  }
+
+  getTasks () {
+    this.route.params.subscribe(({ id }) => {
+      this.projects.getTasksBy(id).subscribe((data) => this.setData(data));
+    });
+  }
 
   ngOnInit(): void {
-    this.route.params.subscribe(({id}) => {
-      this.projects.getTasksBy(id)
-      .subscribe( data => this.setData(data))
-    });
+    this.getTasks()
   }
 }

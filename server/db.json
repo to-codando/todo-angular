@@ -3,50 +3,18 @@
     {
       "id": 1,
       "title": "Projeto 1"
-    },
-    {
-      "id": 2,
-      "title": "Projeto 2"
-    },
-    {
-      "id": 3,
-      "title": "Projeto 3"
-    },
-    {
-      "id": 4,
-      "title": "Projeto 4"
     }
   ],
   "tasks": [
     {
       "id": 1,
-      "projectId":1,
-      "title":"Primeira Tarefa"
+      "projectId": 1,
+      "title": "Primeira Tarefa"
     },
     {
       "id": 2,
-      "projectId":1,
-      "title":"Segunda Tarefa"
-    },
-    {
-      "id": 3,
-      "projectId":1,
-      "title":"Terceira Tarefa"
-    },
-    {
-      "id": 4,
-      "projectId":2,
-      "title":"Quarta Tarefa"
-    },
-    {
-      "id": 5,
-      "projectId":2,
-      "title":"Quinta Tarefa"
-    },
-    {
-      "id": 6,
-      "projectId":3,
-      "title":"Sexta Tarefa"
+      "projectId": 1,
+      "title": "Segunda Tarefa"
     }
   ]
 }

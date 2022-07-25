@@ -23,6 +23,14 @@ export class ProjectService {
     return this.http.get<TaskType[]>(`${this.apiURL}/tasks?projectId=${projectId}`)
   }
 
+  remove (id: number ): Observable<ProjectType[]> {
+    return this.http.delete<ProjectType[]>(`${this.apiURL}/projects/${id}`)
+  }
+
+  removeTask (id: number ): Observable<TaskType[]> {
+    return this.http.delete<TaskType[]>(`${this.apiURL}/tasks/${id}`)
+  }
+
   // getUsers(): Observable<User[]> {
   //   return this.http.get<User[]>(`${this.URL}/users`);
   // }

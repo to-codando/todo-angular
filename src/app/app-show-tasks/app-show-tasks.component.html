@@ -9,5 +9,9 @@
 </div>
 
 <div class="content">
-  <app-data-list [data]="data" [cols]="cols"></app-data-list>
+  <app-data-list
+  [data]="data"
+  [cols]="cols"
+  (onSelectDataListItem)="removeTask($event)"
+  ></app-data-list>
 </div>
