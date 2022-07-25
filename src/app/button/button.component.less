@@ -1,0 +1,59 @@
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+:host {
+  &:extend(.flex);
+}
+
+.btn {
+  &:extend(.flex);
+  height: 2.81rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+:host[type="square"] {
+  button {
+    &:extend(.btn);
+      font-size: 0.875rem;
+      border: 0;
+      border-radius: 5px;
+      background: #0bc08a;
+      color: #fff;
+  }
+}
+
+:host[type="square-hollow"] {
+  button {
+    &:extend(.btn);
+      font-size: 0.875rem;
+      border: 0;
+      border-radius: 5px;
+      border: 1px #ed7eaf solid;
+      background: #fff;
+      color: #ed7eaf;
+  }
+}
+
+:host[type="circle"] {
+  button {
+    &:extend(.flex);
+    height: 2.81rem;
+    width: 2.81rem;
+    background: #fff;
+    color: #0bc08a;
+    border: 1px #0bc08a solid;
+    border-radius: 100%;
+  }
+}
+
+:host {
+  button[disabled] {
+    background: #b5cfc7;
+    color:#6d8c82
+  }
+}
