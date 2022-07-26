@@ -8,6 +8,8 @@ import { ProjectService } from './../services/project.service';
 })
 export class AppCreateTaskComponent implements OnInit {
 
+  projectId: number = 0;
+
   constructor(
     private projects: ProjectService,
     private route: ActivatedRoute,
@@ -15,12 +17,13 @@ export class AppCreateTaskComponent implements OnInit {
   ) { }
 
   createTask (title: string): void {
-    const projectId = this.route.snapshot.params['id']
+    const projectId = this.projectId
     this.projects.createTask({ title, projectId })
       .subscribe(() => this.router.navigateByUrl(`project/${projectId}`))
   }
 
   ngOnInit(): void {
+    this.projectId = this.route.snapshot.params['id']
   }
 
 }

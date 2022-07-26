@@ -29,12 +29,16 @@ export class AppShowTasksComponent implements OnInit {
   }
 
   setProjectId () {
-    this.projectId = this.route.snapshot.params['id']
+    this.route.params.subscribe( params => {
+      this.projectId = this.route.snapshot.params['id']
+    })
+
   }
 
   loadPage (): void {
     if(!this.projectId) return
     this.router.navigateByUrl(`project/${this.projectId}/task`)
+    this.projectId = null
   }
 
   ngOnInit(): void {

@@ -4,24 +4,49 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## MOCK
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The data api was simulated using json-server.
 
-## Build
+The json-server was installed as a project dependency.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+When starting the application, the json-server is started together, without the need for additional commands in the terminal.
 
-## Running unit tests
+For such behavior, I wrote a secondary script that is executed through the command ```ǹpm start```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Application features
 
-## Running end-to-end tests
+- Project registration and display
+- Registration and display of tasks in projects
+- Removal of projects and related tasks
+- Task removal
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Features partially implemented
 
-## Further help
+- Task editing (I plan to complete today)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Visual behavior
+
+The system is not responsive,
+I still intend to apply the appropriate media queri
+
+## Architecture
+
+I stood out for using the principles of KISS, DRY and many of the principles of YAGNI.
+
+To evaluate the test, it would be interesting to review these concepts.
+
+I also tried to use the principles of clean code.
+
+[Remember KISS,YAGNI and DRY](https://danielsmanioto.com/blog/2020/01/18/dry-yagni-kiss-principios-de-design-de-software-que-todo-desenvolvedor-deveria-seguir/)
+
+## End to end or unit tests
+
+I didn't write tests, because, due to my current routine, I ended up not being able to focus 100% on writing the task management system as it would prevent me from participating in other appointments.
+
+## Versination
+
+The system is versioned with git using standard commit's
+[Conventional commit's](https://www.conventionalcommits.org/en/v1.0.0)
