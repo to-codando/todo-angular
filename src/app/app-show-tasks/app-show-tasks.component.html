@@ -2,12 +2,16 @@
 
   <h2>Tasks</h2>
 
-  <app-button type="circle">
+  <app-button type="circle" (click)="loadPage()" *ngIf="!!projectId">
     <app-icon size="1">add</app-icon>
   </app-button>
 
 </div>
 
 <div class="content">
-  <app-data-list [data]="data" [cols]="cols"></app-data-list>
+  <app-data-list
+  [data]="data"
+  [cols]="cols"
+  (onSelectDataListItem)="removeTask($event)"
+  ></app-data-list>
 </div>

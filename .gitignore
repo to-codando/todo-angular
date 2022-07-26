@@ -40,3 +40,7 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+# Layer0 generated build directory
+.layer0
+# Layer0 generated build directory
+.layer0

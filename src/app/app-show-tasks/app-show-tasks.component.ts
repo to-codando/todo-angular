@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { dataType } from 'src/types';
-
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { DataListType, DataListEventType } from 'src/types';
 @Component({
   selector: 'app-show-tasks',
   templateUrl: './app-show-tasks.component.html',
@@ -8,13 +8,41 @@ import { dataType } from 'src/types';
 })
 export class AppShowTasksComponent implements OnInit {
 
-  @Input() data: Array<dataType> = []
+  @Input() data: Array<DataListType> = []
   @Input() cols: number = 1
+  @Output() onRemoveTask = new EventEmitter<DataListEventType>();
+  @Output() onEditTask = new EventEmitter<DataListEventType>();
 
-  constructor() { }
+  projectId: number|null = null;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+  ) { }
+
+  removeTask (payload: DataListEventType) {
+    this.onRemoveTask.emit({ ...payload });
+  }
+
+  editTask (payload: DataListEventType) {
+    this.onEditTask.emit({ ...payload });
+  }
+
+  setProjectId () {
+    this.route.params.subscribe( params => {
+      this.projectId = this.route.snapshot.params['id']
+    })
+
+  }
+
+  loadPage (): void {
+    if(!this.projectId) return
+    this.router.navigateByUrl(`project/${this.projectId}/task`)
+    this.projectId = null
+  }
 
   ngOnInit(): void {
-    console.log(this.data)
+    this.setProjectId()
   }
 
 }

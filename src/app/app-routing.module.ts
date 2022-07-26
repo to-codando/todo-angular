@@ -6,8 +6,9 @@ import { AppCreateTaskComponent } from './app-create-task/app-create-task.compon
 
 const routes: Routes = [
   { path: '', component: AppDashboardComponent },
+  { path: 'project/:id', component: AppDashboardComponent },
   { path: 'create-project', component: AppCreateProjectComponent },
-  { path: 'create-task', component: AppCreateTaskComponent },
+  { path: 'project/:id/task', component: AppCreateTaskComponent },
 ];
 
 @NgModule({

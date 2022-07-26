@@ -1,10 +1,15 @@
 <div class="wrapper">
   <h1>Todo Task</h1>
   <div class="list">
-    <app-data-list [data]="dataList" [cols]="cols"></app-data-list>
+    <app-data-list
+      [data]="dataList"
+      [cols]="cols"
+      [path]="path"
+      (onSelectDataListItem)="removeProject($event)"
+    ></app-data-list>
   </div>
   <div class="control">
-    <app-button type="square">
+    <app-button type="square" (click)="loadPage()">
       <app-icon size="1">add</app-icon> Cadastrar Projeto
     </app-button>
   </div>

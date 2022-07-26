@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { dataType } from 'src/types';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { DataListType, IconType, DataListEventType } from 'src/types';
 
 @Component({
   selector: 'app-data-list',
@@ -8,10 +9,29 @@ import { dataType } from 'src/types';
 })
 export class DataListComponent implements OnInit {
 
-  @Input() data: Array<dataType> = []
+  @Input() data: Array<DataListType> = []
   @Input() cols: number = 1
+  @Input() path: string = ''
+  @Output() onSelectDataListItem = new EventEmitter<DataListEventType>();
 
-  constructor() {}
+  constructor(
+    private route: ActivatedRoute,
+  ) {}
+
+  getPath (item: DataListType): string {
+    return this.path
+      ? `/${this.path}/${item.id}`
+      : this.getDefaultPath()
+
+  }
+
+  getDefaultPath (): string {
+   return this.route.snapshot.url.map( item => `/${item}`).join('')
+  }
+
+  dispatch(icon: IconType, data: DataListType) {
+    this.onSelectDataListItem.emit({ icon, data });
+  }
 
   ngOnInit(): void {}
 

@@ -2,8 +2,8 @@
   <ul>
 
     <li *ngFor="let item of data;" [attr.cols]="cols">
-      <a href="/">{{item.title}}  </a>
-      <app-icon *ngFor="let icon of item.icons">{{icon}}</app-icon>
+      <a [routerLink]="getPath(item)">{{item.title}}</a>
+      <app-icon *ngFor="let icon of item.icons" (click)="dispatch(icon, item)">{{icon.type}}</app-icon>
     </li>
 
   </ul>

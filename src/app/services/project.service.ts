@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ProjectType } from 'src/types';
+import { ProjectType, TaskType, BasicTaskType } from 'src/types';
 
 @Injectable({
   providedIn: 'root'
@@ -16,10 +16,27 @@ export class ProjectService {
   }
 
   get (): Observable<ProjectType[]> {
-    return this.http.get<ProjectType[]>('http://localhost:3000/projects')
+    return this.http.get<ProjectType[]>(`${this.apiURL}/projects`)
   }
 
-  // getUsers(): Observable<User[]> {
-  //   return this.http.get<User[]>(`${this.URL}/users`);
-  // }
+  getTasksBy(projectId: number): Observable<TaskType[]> {
+    return this.http.get<TaskType[]>(`${this.apiURL}/tasks?projectId=${projectId}`)
+  }
+
+  remove (id: number ): Observable<ProjectType[]> {
+    return this.http.delete<ProjectType[]>(`${this.apiURL}/projects/${id}`)
+  }
+
+  removeTask (id: number ): Observable<TaskType[]> {
+    return this.http.delete<TaskType[]>(`${this.apiURL}/tasks/${id}`)
+  }
+
+  create (title: string): Observable<ProjectType> {
+    return this.http.post<ProjectType>(`${this.apiURL}/projects`, {title})
+  }
+
+  createTask (data: BasicTaskType): Observable<ProjectType> {
+    return this.http.post<ProjectType>(`${this.apiURL}/tasks`, {...data})
+  }
+
 }
