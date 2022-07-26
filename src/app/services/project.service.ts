@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { ProjectType, TaskType } from 'src/types';
+import { ProjectType, TaskType, BasicTaskType } from 'src/types';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +31,12 @@ export class ProjectService {
     return this.http.delete<TaskType[]>(`${this.apiURL}/tasks/${id}`)
   }
 
-  // getUsers(): Observable<User[]> {
-  //   return this.http.get<User[]>(`${this.URL}/users`);
-  // }
+  create (title: string): Observable<ProjectType> {
+    return this.http.post<ProjectType>(`${this.apiURL}/projects`, {title})
+  }
+
+  createTask (data: BasicTaskType): Observable<ProjectType> {
+    return this.http.post<ProjectType>(`${this.apiURL}/tasks`, {...data})
+  }
+
 }

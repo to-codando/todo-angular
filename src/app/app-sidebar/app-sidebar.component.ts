@@ -1,6 +1,6 @@
-import { DataListEventType } from './../../types/index';
 import { Component, OnInit } from '@angular/core';
-import { DataListType } from 'src/types';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { DataListType, DataListEventType } from 'src/types';
 import { ProjectService } from '../services/project.service';
 
 @Component({
@@ -17,7 +17,10 @@ export class AppSidebarComponent implements OnInit {
   path = 'project'
 
 
-  constructor(private projects: ProjectService) { }
+  constructor(
+    private projects: ProjectService,
+    private route: Router,
+  ) { }
 
   setDataList (data: DataListType[]): void {
 
@@ -35,7 +38,7 @@ export class AppSidebarComponent implements OnInit {
   removeProject (payload: DataListEventType) {
     const { icon: { event }, data: { id } } = payload
     this.projects.remove(id)
-      .subscribe((data) => this.getProjects())
+      .subscribe((data) => this.route.navigateByUrl(''))
   }
 
   getProjects (): void {
@@ -43,8 +46,8 @@ export class AppSidebarComponent implements OnInit {
     .subscribe( data => this.setDataList(data))
   }
 
-  dispatch () {
-    console.log('ok ')
+  loadPage () {
+    this.route.navigateByUrl('/create-project')
   }
 
    ngOnInit(): void{

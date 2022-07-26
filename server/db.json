@@ -1,20 +1,4 @@
 {
-  "projects": [
-    {
-      "id": 1,
-      "title": "Projeto 1"
-    }
-  ],
-  "tasks": [
-    {
-      "id": 1,
-      "projectId": 1,
-      "title": "Primeira Tarefa"
-    },
-    {
-      "id": 2,
-      "projectId": 1,
-      "title": "Segunda Tarefa"
-    }
-  ]
+  "projects": [],
+  "tasks": []
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class AppCreateComponent implements OnInit {
 
   @Output() onCreate = new EventEmitter<string>();
+  @Input() label: string = 'Defina um título..'
 
   data = ''
   inputIsEmpty = true

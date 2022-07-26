@@ -37,6 +37,10 @@ export class AppDashboardComponent implements OnInit {
     console.log(payload);
   }
 
+  createTask (payload: any) {
+    console.log(payload)
+  }
+
   getTasks () {
     this.route.params.subscribe(({ id }) => {
       this.projects.getTasksBy(id).subscribe((data) => this.setData(data));

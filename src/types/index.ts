@@ -21,8 +21,17 @@ export type ProjectType = {
   title: string;
 }
 
+export type CreateProjectType = {
+  title: string
+}
+
 export type TaskType = {
   id: number;
   projectId: number;
   title: string;
+}
+
+export type BasicTaskType = {
+  projectId: number;
+  title: string
 }

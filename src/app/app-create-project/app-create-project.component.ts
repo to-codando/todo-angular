@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProjectService } from './../services/project.service';
 
 @Component({
   selector: 'app-create-project',
@@ -7,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppCreateProjectComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private projects: ProjectService,
+    private router: Router
+  ) { }
 
   createProject (value: string): void {
-    console.log(value)
+    this.projects.create(value)
+    .subscribe( data => {
+      const { id } = data
+      this.router.navigateByUrl(`/project/${id}`)
+    })
   }
 
   ngOnInit(): void {

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { DataListType, DataListEventType } from 'src/types';
-
 @Component({
   selector: 'app-show-tasks',
   templateUrl: './app-show-tasks.component.html',
@@ -13,7 +13,12 @@ export class AppShowTasksComponent implements OnInit {
   @Output() onRemoveTask = new EventEmitter<DataListEventType>();
   @Output() onEditTask = new EventEmitter<DataListEventType>();
 
-  constructor() { }
+  projectId: number|null = null;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+  ) { }
 
   removeTask (payload: DataListEventType) {
     this.onRemoveTask.emit({ ...payload });
@@ -23,8 +28,17 @@ export class AppShowTasksComponent implements OnInit {
     this.onEditTask.emit({ ...payload });
   }
 
+  setProjectId () {
+    this.projectId = this.route.snapshot.params['id']
+  }
+
+  loadPage (): void {
+    if(!this.projectId) return
+    this.router.navigateByUrl(`project/${this.projectId}/task`)
+  }
+
   ngOnInit(): void {
-    // console.log(this.data)
+    this.setProjectId()
   }
 
 }
